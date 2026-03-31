@@ -63,8 +63,11 @@ export default function LandingPage() {
 
         {/* Navigation (Matches the Aino mock exactly) */}
         <header className="landing-nav relative z-20 w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => router.push('/')}>
-            <span className={`text-2xl font-bold tracking-widest text-slate-900 ${orbitron.className}`}>CATALYST</span>
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => router.push('/')}>
+            <div className="w-10 h-10 relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-1.5 shadow-sm group-hover:shadow-md transition-all">
+              <img src="/logo.png" alt="CATALYST Logo" className="w-full h-full object-contain" />
+            </div>
+            <span className={`text-xl font-bold tracking-widest text-slate-900 ${orbitron.className}`}>CATALYST</span>
           </div>
 
           <nav className={`hidden md:flex items-center p-1 bg-slate-100/60 backdrop-blur-md rounded-full shadow-inner ${inter.className} text-sm font-medium text-slate-500`}>
