@@ -1,8 +1,10 @@
+export const runtime = 'edge';
+
 import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
     return (
-        <div className="flex min-h-screen items-center justify-center bg-black">
+        <div className="flex min-h-screen items-center justify-center bg-transparent">
             <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" forceRedirectUrl="/analyze" />
         </div>
     );

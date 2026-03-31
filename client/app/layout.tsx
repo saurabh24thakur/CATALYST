@@ -3,6 +3,7 @@ import { Rajdhani, Orbitron } from "next/font/google";
 import "./globals.css";
 import DashboardSidebar from "@/components/Layout/DashboardSidebar";
 import Navbar from "@/components/Layout/Navbar";
+import MainWrapper from "@/components/Layout/MainWrapper";
 import { Providers } from "@/components/providers";
 import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import PageTransition from "@/components/PageTransition";
@@ -31,20 +32,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 'pk_test_Y29uY2lzZS1jaGFtb2lzLTIzLmNsZXJrLmFjY291bnRzLmRldiQ'}>
       <html lang="en">
-        <body className={`${rajdhani.variable} ${orbitron.variable} font-sans antialiased bg-black`}>
+        <body className={`${rajdhani.variable} ${orbitron.variable} font-sans antialiased bg-[#dceaf9] text-slate-800 selection:bg-blue-200 min-h-screen`}>
+          {/* Background Grid for the entire app */}
+          <div className="fixed inset-0 z-0 pointer-events-none light-grid-bg opacity-30" />
+
           <ClerkLoading>
             <FullScreenLoader />
           </ClerkLoading>
           <Providers>
             <DashboardSidebar />
             <Navbar />
-            <main className="ml-20">
+            <MainWrapper>
               <PageTransition>
                 {children}
               </PageTransition>
-            </main>
+            </MainWrapper>
           </Providers>
         </body>
       </html>

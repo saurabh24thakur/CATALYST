@@ -1,6 +1,6 @@
 interface TimelineBarProps {
   percentage: number;
-  color?: 'green' | 'orange' | 'white';
+  color?: 'green' | 'orange' | 'white' | 'slate';
   label?: string;
   avatars?: string[];
   showPercentage?: boolean;
@@ -37,7 +37,7 @@ export default function TimelineBar({
             {avatars.map((avatar, idx) => (
               <div
                 key={idx}
-                className="w-8 h-8 rounded-full bg-gray-700 border-2 border-black flex items-center justify-center text-xs font-semibold"
+                className="w-8 h-8 rounded-full bg-slate-100 border-2 border-white flex items-center justify-center text-xs font-semibold text-slate-700 shadow-sm"
                 style={{
                   marginLeft: idx > 0 ? '-8px' : '0',
                   zIndex: avatars.length - idx

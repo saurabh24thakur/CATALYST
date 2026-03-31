@@ -23,6 +23,8 @@ export default function DashboardSidebar() {
   const router = useRouter();
   const { user } = useUser();
 
+  if (pathname === '/') return null;
+
   const displayName = user?.fullName || user?.firstName || user?.username || 'S';
   const userInitial = displayName[0]?.toUpperCase() || 'S';
 
@@ -32,13 +34,8 @@ export default function DashboardSidebar() {
   };
 
   return (
-    <div className="fixed left-0 top-0 bottom-0 w-20 bg-black z-50 flex flex-col items-center py-6">
-      {/* Logo / User Initial */}
-      <div className="mb-8">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7FFF00] to-[#FF8C00] flex items-center justify-center shadow-lg">
-          <span className="text-black font-bold text-2xl">{userInitial}</span>
-        </div>
-      </div>
+    <div className="fixed left-0 top-0 bottom-0 w-20 bg-[#dceaf9]/80 backdrop-blur-md border-r border-[#c8dff5]/60 shadow-[4px_0_30px_rgba(0,0,0,0.03)] z-50 flex flex-col items-center py-6">
+      <div className="mb-8 h-10"></div>
 
       {/* Navigation */}
       <nav className="flex-1 flex flex-col gap-2">
@@ -51,17 +48,17 @@ export default function DashboardSidebar() {
               key={item.name}
               onClick={() => router.push(item.href)}
               className={`
-                w-14 h-14 rounded-full flex items-center justify-center transition-all relative group
+                w-14 h-14 rounded-2xl flex items-center justify-center transition-all relative group
                 ${active
-                  ? 'bg-white text-black shadow-lg'
-                  : 'text-gray-500 hover:text-white hover:bg-[#1a1a1a]'
+                  ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20'
+                  : 'text-slate-400 hover:text-slate-900 hover:bg-slate-100'
                 }
               `}
               title={item.name}
             >
-              <Icon className="w-6 h-6" />
+              <Icon className="w-5 h-5" />
               {/* Tooltip */}
-              <div className="absolute left-full ml-4 px-3 py-2 bg-[#1a1a1a] text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl border border-[#2a2a2a]">
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl">
                 {item.name}
               </div>
             </button>
@@ -74,7 +71,7 @@ export default function DashboardSidebar() {
         <UserButton
           appearance={{
             elements: {
-              avatarBox: 'w-11 h-11 border-2 border-[#2a2a2a] hover:border-[#7FFF00] transition-all rounded-full',
+              avatarBox: 'w-10 h-10 border-2 border-slate-200 hover:border-slate-400 transition-all rounded-full',
             },
           }}
         />

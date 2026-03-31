@@ -44,17 +44,17 @@ export default function SkillTree({ userId, onSkillSelect }: SkillTreeProps) {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'beginner': return 'bg-green-500/20 text-green-400 border-green-500/50';
-      case 'intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50';
-      case 'advanced': return 'bg-red-500/20 text-red-400 border-red-500/50';
-      default: return 'bg-gray-500/20 text-black border-gray-500/50';
+      case 'beginner': return 'bg-emerald-50 text-emerald-600 border-emerald-200';
+      case 'intermediate': return 'bg-amber-50 text-amber-600 border-amber-200';
+      case 'advanced': return 'bg-rose-50 text-rose-600 border-rose-200';
+      default: return 'bg-slate-100 text-slate-600 border-slate-200';
     }
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
       </div>
     );
   }
@@ -62,10 +62,10 @@ export default function SkillTree({ userId, onSkillSelect }: SkillTreeProps) {
   return (
     <div className="h-full overflow-y-auto p-6 space-y-4">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold text-slate-900">
           Skill Tree
         </h2>
-        <p className="text-sm text-black mt-1">Choose your path to mastery</p>
+        <p className="text-sm text-slate-500 mt-1">Choose your path to mastery</p>
       </div>
 
       <div className="space-y-3">
@@ -73,10 +73,10 @@ export default function SkillTree({ userId, onSkillSelect }: SkillTreeProps) {
           <Card
             key={skill.id}
             className={`
-              border-2 transition-all duration-300 cursor-pointer
+              border transition-all duration-300 cursor-pointer shadow-sm
               ${skill.isUnlocked
-                ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-purple-500/50 hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/20'
-                : 'bg-gray-900/50 border-gray-700 opacity-60'
+                ? 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-md'
+                : 'bg-slate-50 border-slate-200 opacity-60'
               }
             `}
             onClick={() => skill.isUnlocked && onSkillSelect(skill.id)}
@@ -86,13 +86,13 @@ export default function SkillTree({ userId, onSkillSelect }: SkillTreeProps) {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     {skill.isUnlocked ? (
-                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-emerald-500" />
                     ) : (
-                      <Lock className="w-5 h-5 text-black" />
+                      <Lock className="w-5 h-5 text-slate-400" />
                     )}
-                    <CardTitle className="text-lg">{skill.name}</CardTitle>
+                    <CardTitle className="text-lg text-slate-900">{skill.name}</CardTitle>
                   </div>
-                  <CardDescription className="text-xs">{skill.description}</CardDescription>
+                  <CardDescription className="text-xs text-slate-500">{skill.description}</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -102,12 +102,12 @@ export default function SkillTree({ userId, onSkillSelect }: SkillTreeProps) {
                   <Badge variant="outline" className={getDifficultyColor(skill.difficulty)}>
                     {skill.difficulty}
                   </Badge>
-                  <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-500/50">
+                  <Badge variant="outline" className="bg-indigo-50 text-indigo-600 border-indigo-200">
                     {skill.xpReward} XP
                   </Badge>
                 </div>
                 {!skill.isUnlocked && skill.prerequisites.length > 0 && (
-                  <span className="text-xs text-black">
+                  <span className="text-xs text-slate-500">
                     🔒 Prerequisites required
                   </span>
                 )}
