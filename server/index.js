@@ -10,7 +10,9 @@ const app = express();
 app.use(cors({
   origin: [
     'https://catalyst-v1.pages.dev',
+    'https://ai-mock-interview-frontend-2.pages.dev',
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
     'http://localhost:5000'
   ],
   credentials: true

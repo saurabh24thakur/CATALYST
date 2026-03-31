@@ -64,9 +64,9 @@ export default function SocraticTutor() {
               onClick={() => setIsOpen(true)}
               className="
                 relative w-16 h-16 rounded-full
-                bg-gradient-to-br from-purple-500 to-pink-500
-                hover:from-purple-600 hover:to-pink-600
-                shadow-[0_0_30px_rgba(168,85,247,0.5)]
+                bg-gradient-to-br from-blue-600 to-indigo-600
+                hover:from-blue-700 hover:to-indigo-700
+                shadow-lg shadow-blue-500/20
                 group
               "
             >
@@ -81,16 +81,16 @@ export default function SocraticTutor() {
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
-                className="absolute inset-0 rounded-full border-2 border-purple-400"
+                className="absolute inset-0 rounded-full border-2 border-blue-400"
               />
 
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-6 h-6 text-white" />
 
               {/* Notification dot */}
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
-                className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-gray-950"
+                className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"
               />
             </Button>
           </motion.div>
@@ -109,40 +109,40 @@ export default function SocraticTutor() {
               fixed bottom-6 right-6 z-50
               w-96 h-[600px]
               rounded-2xl overflow-hidden
-              bg-gradient-to-br from-gray-900/95 to-gray-800/95
+              bg-white/95
               backdrop-blur-2xl
-              border-2 border-purple-500/30
-              shadow-[0_0_50px_rgba(168,85,247,0.3)]
+              border border-slate-200
+              shadow-2xl shadow-slate-200/50
               flex flex-col
             "
           >
             {/* Header */}
             <div className="
-              p-4 border-b border-white/10
-              bg-gradient-to-r from-purple-500/20 to-pink-500/20
+              p-4 border-b border-slate-100
+              bg-slate-50
               flex items-center justify-between
             ">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                    <Sparkles className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-white" />
                   </div>
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900"
+                    className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white"
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">Socratic Tutor</h3>
-                  <p className="text-xs text-black">Always online</p>
+                  <h3 className="font-semibold text-slate-900">Socratic Tutor</h3>
+                  <p className="text-xs text-slate-500">Always online</p>
                 </div>
               </div>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-black hover:text-black"
+                className="text-slate-400 hover:text-slate-600 hover:bg-slate-100"
               >
                 <X className="w-5 h-5" />
               </Button>
@@ -162,12 +162,12 @@ export default function SocraticTutor() {
                     <div className={`
                       max-w-[80%] p-3 rounded-2xl
                       ${message.role === 'user'
-                        ? 'bg-gradient-to-br from-indigo-500 to-cyan-500 text-black'
-                        : 'bg-white/5 border border-white/10 text-black'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-slate-50 border border-slate-200 text-slate-900 shadow-sm'
                       }
                     `}>
                       <p className="text-sm">{message.content}</p>
-                      <p className="text-xs opacity-50 mt-1">
+                      <p className={`text-xs mt-1 ${message.role === 'user' ? 'text-blue-100' : 'text-slate-400'}`}>
                         {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </p>
                     </div>
@@ -177,22 +177,22 @@ export default function SocraticTutor() {
             </ScrollArea>
 
             {/* Input */}
-            <div className="p-4 border-t border-white/10 bg-white/5">
+            <div className="p-4 border-t border-slate-100 bg-white">
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask a question..."
                   className="
-                    flex-1 bg-white/5 border-white/10
-                    focus:border-purple-500/50
-                    text-black placeholder:text-black
+                    flex-1 bg-slate-50 border-slate-200
+                    focus:border-blue-500 focus:ring-blue-500/20
+                    text-slate-900 placeholder:text-slate-500
                   "
                 />
                 <Button
                   type="submit"
                   size="icon"
-                  className="bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   <Send className="w-4 h-4" />
                 </Button>

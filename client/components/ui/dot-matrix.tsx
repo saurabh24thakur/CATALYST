@@ -21,10 +21,10 @@ export default function DotMatrix({
 
   const getColor = () => {
     switch (color) {
-      case 'green': return 'bg-[#FACC15]';
-      case 'orange': return 'bg-[#FF8C00]';
-      case 'white': return 'bg-white';
-      default: return 'bg-[#FACC15]';
+      case 'green': return 'bg-blue-500';
+      case 'orange': return 'bg-indigo-500';
+      case 'white': return 'bg-slate-800';
+      default: return 'bg-blue-500';
     }
   };
 
@@ -32,9 +32,9 @@ export default function DotMatrix({
     <div className="flex flex-col h-full">
       {(label || value) && (
         <div className="flex justify-between items-end mb-4">
-          {label && <span className="text-black text-sm font-medium">{label}</span>}
-          {value && <span className={`text-2xl font-bold ${color === 'green' ? 'text-[#7FFF00]' :
-            color === 'orange' ? 'text-[#FF8C00]' : 'text-black'
+          {label && <span className="text-slate-500 text-sm font-medium">{label}</span>}
+          {value && <span className={`text-2xl font-bold ${color === 'green' ? 'text-blue-600' :
+            color === 'orange' ? 'text-indigo-600' : 'text-slate-900'
             }`}>{value}</span>}
         </div>
       )}
@@ -54,7 +54,7 @@ export default function DotMatrix({
           return (
             <div
               key={i}
-              className={`rounded-full aspect-square transition-all duration-500 ${isActive ? getColor() : 'bg-gray-800'}`}
+              className={`rounded-full aspect-square transition-all duration-500 ${isActive ? getColor() : 'bg-slate-200'}`}
               style={{ opacity }}
             />
           );

@@ -142,7 +142,7 @@ function PassportContent() {
 
                 {/* Statistics Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <Card className="bg-gray-900/50 border-2 border-green-500/30">
+                    <Card className="bg-slate-50 border border-slate-200/50 border-2 border-green-500/30">
                         <CardContent className="pt-6 text-center">
                             <Target className="w-8 h-8 text-green-400 mx-auto mb-2" />
                             <div className="text-3xl font-bold text-green-400">{passport.statistics.totalMissionsCompleted}</div>
@@ -150,7 +150,7 @@ function PassportContent() {
                         </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-900/50 border-2 border-blue-500/30">
+                    <Card className="bg-slate-50 border border-slate-200/50 border-2 border-blue-500/30">
                         <CardContent className="pt-6 text-center">
                             <Award className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                             <div className="text-3xl font-bold text-blue-400">{passport.statistics.averageScore}</div>
@@ -158,7 +158,7 @@ function PassportContent() {
                         </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-900/50 border-2 border-yellow-500/30">
+                    <Card className="bg-slate-50 border border-slate-200/50 border-2 border-yellow-500/30">
                         <CardContent className="pt-6 text-center">
                             <Trophy className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
                             <div className="text-3xl font-bold text-yellow-400">{passport.statistics.skillsMastered}</div>
@@ -166,7 +166,7 @@ function PassportContent() {
                         </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-900/50 border-2 border-purple-500/30">
+                    <Card className="bg-slate-50 border border-slate-200/50 border-2 border-purple-500/30">
                         <CardContent className="pt-6 text-center">
                             <Clock className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                             <div className="text-3xl font-bold text-purple-400">{passport.statistics.totalTimeInvested.split(' ')[0]}</div>
@@ -176,7 +176,7 @@ function PassportContent() {
                 </div>
 
                 {/* Skills Breakdown */}
-                <Card className="bg-gray-900/50 border-2 border-purple-500/30">
+                <Card className="bg-slate-50 border border-slate-200/50 border-2 border-purple-500/30">
                     <CardHeader>
                         <CardTitle>Skills Breakdown</CardTitle>
                         <CardDescription>Performance across different domains</CardDescription>
@@ -194,7 +194,7 @@ function PassportContent() {
                                         <div className="text-xs text-black">Avg Score</div>
                                     </div>
                                 </div>
-                                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                <div className="h-2 bg-white border border-slate-200 shadow-sm rounded-full overflow-hidden">
                                     <div
                                         className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all"
                                         style={{ width: `${skill.averageScore}%` }}
@@ -206,14 +206,14 @@ function PassportContent() {
                 </Card>
 
                 {/* Recent Achievements */}
-                <Card className="bg-gray-900/50 border-2 border-green-500/30">
+                <Card className="bg-slate-50 border border-slate-200/50 border-2 border-green-500/30">
                     <CardHeader>
                         <CardTitle>Recent Achievements</CardTitle>
                         <CardDescription>Latest completed missions</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {passport.recentAchievements.map((achievement, idx) => (
-                            <div key={idx} className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                            <div key={idx} className="flex items-center justify-between p-3 bg-white border border-slate-200 shadow-sm/50 rounded-lg">
                                 <div>
                                     <h4 className="font-semibold">{achievement.missionTitle}</h4>
                                     <p className="text-sm text-black">{getSkillName(achievement.skillId)}</p>

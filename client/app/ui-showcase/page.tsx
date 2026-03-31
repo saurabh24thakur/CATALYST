@@ -86,7 +86,7 @@ export default function UIShowcasePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-[#f8fafc]">
       {/* Glassmorphic Sidebar */}
       <GlassSidebar user={demoUser} readinessScore={72} />
 
@@ -97,15 +97,15 @@ export default function UIShowcasePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold text-slate-900 mb-2">
             Premium SaaS UI Showcase
           </h1>
-          <p className="text-black mb-8">
-            Glassmorphism • Dark Mode • Neon Accents • Smooth Animations
+          <p className="text-slate-500 mb-8">
+            Glassmorphism • Light Mode • Professional Accents • Smooth Animations
           </p>
 
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="glass-card">
+            <TabsList className="bg-white border border-slate-200 shadow-sm p-1 rounded-lg">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="heatmap">Skill Heatmap</TabsTrigger>
               <TabsTrigger value="roadmap">Roadmap</TabsTrigger>
@@ -114,15 +114,15 @@ export default function UIShowcasePage() {
             <TabsContent value="overview" className="space-y-6">
               {/* Skill Gap Cards */}
               <div className="grid grid-cols-2 gap-6">
-                <Card className="glass-card p-6">
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                <Card className="bg-white border-slate-200 shadow-sm p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">
                     Your Skills
                   </h3>
                   <div className="space-y-3">
                     {demoSkills.filter(s => s.currentLevel >= 3).map((skill) => (
                       <div key={skill.name} className="flex items-center justify-between">
-                        <span className="text-black">{skill.name}</span>
-                        <Badge className="bg-gradient-to-r from-indigo-500 to-cyan-500 border-0">
+                        <span className="text-slate-700">{skill.name}</span>
+                        <Badge className="bg-blue-100 text-blue-700 border-0">
                           Level {skill.currentLevel}
                         </Badge>
                       </div>
@@ -130,15 +130,15 @@ export default function UIShowcasePage() {
                   </div>
                 </Card>
 
-                <Card className="glass-card p-6 border-neon">
-                  <h3 className="text-xl font-semibold text-neon-missing mb-4 animate-glow">
+                <Card className="bg-white border-slate-200 shadow-sm p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">
                     Missing Skills
                   </h3>
                   <div className="space-y-3">
                     {demoSkills.filter(s => s.targetLevel - s.currentLevel >= 3).map((skill) => (
                       <div key={skill.name} className="flex items-center justify-between">
-                        <span className="text-black">{skill.name}</span>
-                        <Badge className="bg-gradient-to-r from-pink-500 to-purple-500 border-0">
+                        <span className="text-slate-700">{skill.name}</span>
+                        <Badge className="bg-indigo-100 text-indigo-700 border-0">
                           Gap: {skill.targetLevel - skill.currentLevel}
                         </Badge>
                       </div>
@@ -151,7 +151,7 @@ export default function UIShowcasePage() {
               <div className="grid grid-cols-3 gap-6">
                 {[
                   { icon: '📊', title: 'Glassmorphic Sidebar', desc: 'Frosted glass effect with backdrop blur' },
-                  { icon: '🎨', title: 'Neon Accents', desc: 'Pink/Purple gradients for critical gaps' },
+                  { icon: '🎨', title: 'Professional Accents', desc: 'Blue/Indigo core palette' },
                   { icon: '✨', title: 'Smooth Animations', desc: 'Framer Motion powers all interactions' },
                   { icon: '🗺️', title: 'Animated Roadmap', desc: 'Slide-in effects with expandable weeks' },
                   { icon: '🔥', title: 'Skill Heatmap', desc: 'Canvas-based visualization with gradients' },
@@ -163,15 +163,15 @@ export default function UIShowcasePage() {
                     transition={{ duration: 0.2 }}
                   >
                     <Card className="
-                      glass-card p-6
-                      hover:shadow-[0_0_30px_rgba(99,102,241,0.3)]
+                      bg-white border-slate-200 shadow-sm p-6
+                      hover:shadow-md hover:border-blue-200
                       transition-all duration-300
                     ">
                       <div className="text-4xl mb-3">{feature.icon}</div>
-                      <h3 className="text-lg font-semibold text-white mb-2">
+                      <h3 className="text-lg font-semibold text-slate-900 mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-black">
+                      <p className="text-sm text-slate-500">
                         {feature.desc}
                       </p>
                     </Card>
@@ -180,22 +180,22 @@ export default function UIShowcasePage() {
               </div>
 
               {/* Implementation Status */}
-              <Card className="glass-card p-6">
-                <h3 className="text-xl font-semibold text-white mb-4">
+              <Card className="bg-white border-slate-200 shadow-sm p-6">
+                <h3 className="text-xl font-semibold text-slate-900 mb-4">
                   ✅ All Components Implemented
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    'Glassmorphic Sidebar',
+                    'Light Mode Aesthetics',
                     'Socratic Tutor Chat',
-                    'Dark Mode with Neon Accents',
+                    'Aino-inspired Dashboard',
                     'Framer Motion Animations',
                     'Skill Gap Heatmap',
                     'Animated Roadmap',
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span>
-                      <span className="text-black">{item}</span>
+                      <span className="text-emerald-500">✓</span>
+                      <span className="text-slate-600">{item}</span>
                     </div>
                   ))}
                 </div>

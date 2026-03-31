@@ -6,7 +6,7 @@ import { Orbit } from "lucide-react"
 
 export default function NotFound() {
     return (
-        <div className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="min-h-screen w-full bg-transparent text-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
             {/* Background Stars */}
             <div className="absolute inset-0 w-full h-full pointer-events-none">
                 {[...Array(50)].map((_, i) => (
@@ -28,7 +28,7 @@ export default function NotFound() {
                 <div className="relative">
                     {/* Planet Icon */}
                     <div className="absolute -left-32 top-1/2 -translate-y-1/2 hidden md:block">
-                        <Orbit className="w-24 h-24 text-white opacity-80 -rotate-45" strokeWidth={1.5} />
+                        <Orbit className="w-24 h-24 text-slate-900 opacity-80 -rotate-45" strokeWidth={1.5} />
                     </div>
 
                     {/* 404 Text */}
@@ -42,7 +42,7 @@ export default function NotFound() {
 
                 <div className="space-y-4 max-w-md mx-auto px-4">
                     <h2 className="text-2xl md:text-3xl font-bold">Page Not Found!</h2>
-                    <p className="text-gray-400 text-lg">
+                    <p className="text-slate-500 text-lg">
                         The requested page could not be found on the server.
                     </p>
                 </div>
@@ -50,7 +50,7 @@ export default function NotFound() {
                 <Link href="/">
                     <Button
                         variant="outline"
-                        className="rounded-full px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-black transition-colors bg-transparent mt-8"
+                        className="rounded-full px-8 py-6 text-lg border-2 border-white text-slate-900 hover:bg-white hover:text-black transition-colors bg-transparent mt-8"
                     >
                         GO HOME
                     </Button>
