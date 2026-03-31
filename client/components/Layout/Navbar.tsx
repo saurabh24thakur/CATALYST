@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Orbitron } from 'next/font/google';
-import { useSession, signOut } from 'next-auth/react';
+import { useAuth, UserButton } from '@clerk/nextjs';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] });
 
 export default function Navbar() {
     const router = useRouter();
-    const { data: session } = useSession();
+    const { isLoaded, userId } = useAuth();
 
     return (
         <header className="fixed top-0 right-0 left-20 z-40 bg-black">
@@ -22,23 +22,27 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    {session ? (
-                        <button
-                            className="text-red-500 hover:text-red-400 font-semibold px-4 py-2 transition-colors"
-                            onClick={() => signOut()}
-                        >
-                            Logout
-                        </button>
-                    ) : (
+                    {isLoaded && !userId && (
                         <button
                             className="text-white bg-zinc-700 px-4 py-2 rounded-full hover:bg-zinc-600 transition-colors"
-                            onClick={() => router.push('/auth/signin')}
+                            onClick={() => router.push('/sign-in')}
                         >
                             Sign In
                         </button>
                     )}
+                    {isLoaded && userId && (
+                        <div className="flex items-center justify-center">
+                            <UserButton
+                                appearance={{
+                                    elements: {
+                                        avatarBox: "w-10 h-10 border-2 border-transparent hover:border-zinc-500 transition-colors"
+                                    }
+                                }}
+                            />
+                        </div>
+                    )}
                     <Button
-                        className="text-white bg-zinc-700 px-4 py-3 rounded-full  hover:bg-yellow-600"
+                        className="text-white bg-zinc-700 px-4 py-3 rounded-full hover:bg-yellow-600"
                         onClick={() => router.push('/upload')}
                     >
                         Get Started

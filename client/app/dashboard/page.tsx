@@ -1,6 +1,6 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
+import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,24 +10,26 @@ import { Orbitron } from 'next/font/google';
 const orbitron = Orbitron({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] });
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession();
+  const { user, isLoaded, isSignedIn } = useUser();
   const router = useRouter();
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/auth/signin');
+    if (isLoaded && !isSignedIn) {
+      router.push('/sign-in');
     }
-  }, [status, router]);
+  }, [isLoaded, isSignedIn, router]);
 
-  if (status === 'loading') {
+  if (!isLoaded) {
     return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>;
   }
 
-  if (!session) {
+  if (!isSignedIn || !user) {
     return null;
   }
 
-  const userInitial = (session.user?.name?.[0] || session.user?.email?.[0])?.toUpperCase() || 'U';
+  const displayName = user.fullName || user.firstName || user.username || 'User';
+  const displayEmail = user.primaryEmailAddress?.emailAddress || '';
+  const userInitial = displayName[0]?.toUpperCase() || 'U';
 
   return (
     <div className="min-h-screen bg-black text-white p-8 pl-28 pt-24">
@@ -35,7 +37,7 @@ export default function DashboardPage() {
       <div className="flex justify-between items-end mb-10">
         <div>
           <h1 className={`text-4xl font-bold mb-2 ${orbitron.className}`}>
-            Welcome back, <span className="text-yellow-500">{session.user?.name}</span>
+            Welcome back, <span className="text-yellow-500">{displayName}</span>
           </h1>
           <p className="text-gray-400">Here's an overview of your progress and activity.</p>
         </div>
@@ -90,8 +92,8 @@ export default function DashboardPage() {
                 {userInitial}
               </div>
               <div className="space-y-1">
-                <h3 className="text-xl font-semibold text-white">{session.user?.name}</h3>
-                <p className="text-gray-400">{session.user?.email}</p>
+                <h3 className="text-xl font-semibold text-white">{displayName}</h3>
+                <p className="text-gray-400">{displayEmail}</p>
                 <div className="flex gap-2 mt-2">
                   <span className="px-3 py-1 bg-zinc-800 rounded-full text-xs text-gray-300 border border-zinc-700">Free Plan</span>
                   <span className="px-3 py-1 bg-zinc-800 rounded-full text-xs text-gray-300 border border-zinc-700">Member since 2024</span>

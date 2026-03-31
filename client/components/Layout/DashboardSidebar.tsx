@@ -1,14 +1,13 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useUser, UserButton } from '@clerk/nextjs';
 import {
   Home,
   Upload,
   BarChart3,
   Map,
   LayoutDashboard,
-  User
 } from 'lucide-react';
 
 const navigation = [
@@ -22,9 +21,10 @@ const navigation = [
 export default function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { data: session } = useSession();
+  const { user } = useUser();
 
-  const userInitial = (session?.user?.name?.[0] || session?.user?.email?.[0])?.toUpperCase() || 'S';
+  const displayName = user?.fullName || user?.firstName || user?.username || 'S';
+  const userInitial = displayName[0]?.toUpperCase() || 'S';
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -32,8 +32,8 @@ export default function DashboardSidebar() {
   };
 
   return (
-    <div className="fixed left-0 top-0 bottom-0 w-20 bg-black   z-50 flex flex-col items-center py-6">
-      {/* Logo */}
+    <div className="fixed left-0 top-0 bottom-0 w-20 bg-black z-50 flex flex-col items-center py-6">
+      {/* Logo / User Initial */}
       <div className="mb-8">
         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7FFF00] to-[#FF8C00] flex items-center justify-center shadow-lg">
           <span className="text-black font-bold text-2xl">{userInitial}</span>
@@ -53,14 +53,13 @@ export default function DashboardSidebar() {
               className={`
                 w-14 h-14 rounded-full flex items-center justify-center transition-all relative group
                 ${active
-                  ? 'bg-white text-black shadow-lg '
+                  ? 'bg-white text-black shadow-lg'
                   : 'text-gray-500 hover:text-white hover:bg-[#1a1a1a]'
                 }
               `}
               title={item.name}
             >
               <Icon className="w-6 h-6" />
-
               {/* Tooltip */}
               <div className="absolute left-full ml-4 px-3 py-2 bg-[#1a1a1a] text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl border border-[#2a2a2a]">
                 {item.name}
@@ -70,11 +69,15 @@ export default function DashboardSidebar() {
         })}
       </nav>
 
-      {/* User Profile */}
-      <div className="mt-auto">
-        <button className="w-14 h-14 rounded-full bg-[#1a1a1a] border-2 border-[#2a2a2a] flex items-center justify-center hover:border-[#7FFF00] transition-all shadow-lg">
-          <User className="w-6 h-6 text-black" />
-        </button>
+      {/* Clerk UserButton — handles sign out, profile, etc. */}
+      <div className="mt-auto flex items-center justify-center">
+        <UserButton
+          appearance={{
+            elements: {
+              avatarBox: 'w-11 h-11 border-2 border-[#2a2a2a] hover:border-[#7FFF00] transition-all rounded-full',
+            },
+          }}
+        />
       </div>
     </div>
   );
