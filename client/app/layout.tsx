@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 'pk_test_Y29uY2lzZS1jaGFtb2lzLTIzLmNsZXJrLmFjY291bnRzLmRldiQ'}>
       <html lang="en">
         <body className={`${rajdhani.variable} ${orbitron.variable} font-sans antialiased bg-[#dceaf9] text-slate-800 selection:bg-blue-200 min-h-screen`}>
           {/* Background Grid for the entire app */}
