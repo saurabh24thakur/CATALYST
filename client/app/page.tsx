@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Sparkles, Music, Users, MessageCircle, Briefcase, TrendingUp, TrendingDown } from 'lucide-react';
+import { ArrowRight, Music, Users, MessageCircle, Briefcase, TrendingUp, TrendingDown } from 'lucide-react';
 import { Quicksand, Inter, Orbitron } from 'next/font/google';
 
 import gsap from 'gsap';
@@ -104,7 +104,7 @@ export default function LandingPage() {
               onClick={() => router.push('/upload')}
               className={`flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-full text-base font-semibold hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/20 transition-all ${inter.className}`}
             >
-              <span>Let's begin</span>
+              <span>Let&apos;s begin</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
