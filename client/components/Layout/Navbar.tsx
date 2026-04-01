@@ -17,8 +17,14 @@ export default function Navbar() {
     return (
         <header className="fixed top-0 right-0 left-20 z-40 bg-[#dceaf9]/80 backdrop-blur-md border-b border-[#c8dff5]/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-all">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                    <span className={`text-3xl font-bold text-slate-900 tracking-widest ${orbitron.className}`}>
+                <div
+                    className="flex items-center gap-3 cursor-pointer group"
+                    onClick={() => router.push('/')}
+                >
+                    <div className="w-10 h-10 relative overflow-hidden rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm group-hover:shadow-md transition-all">
+                        <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                    </div>
+                    <span className={`text-xl font-bold text-slate-900 tracking-widest ${orbitron.className}`}>
                         CATALYST
                     </span>
                 </div>

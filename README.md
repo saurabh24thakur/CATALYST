@@ -1,136 +1,112 @@
-# CATALYST
+# CATALYST: Cinematic AI Mastery Simulation
+**"Precision-Engineered Learning for the AI Era"**
 
-CATALYST is the Next.js client for an AI-guided skill development platform. It helps users upload a resume, analyze skill gaps for a target role, generate a personalized learning roadmap, and view supporting dashboard and passport experiences.
+> **"Traditional learning tells you what to know. CATALYST simulates who you need to become."**
 
-## Stack
+CATALYST is a cinematic, AI-driven simulation platform for mastery-based learning. It transforms the technical upskilling journey into a high-stakes simulation—analyzing your professional DNA, mapping strategic skill gaps, and stress-testing your "Project Intelligence" through immersive AI challenges.
 
-- Next.js 15 with the App Router
-- React 18
-- TypeScript
-- Tailwind CSS 4
-- NextAuth v5 beta
-- Recharts and custom dashboard UI components
-- Cloudflare Pages build support via `@cloudflare/next-on-pages`
+---
 
-## Core User Flow
+## 🚀 Key Features
 
-1. `Upload Resume` at `/upload`
-2. `Analyze Skill Gap` at `/analyze`
-3. `Generate Roadmap` at `/roadmap`
+### 🧠 Phase 1: Skill DNA Analysis (IMPLEMENTED)
+- **Resume Extraction**: Gemini-powered parsing of PDF/DOCX resumes.
+- **Skill Heatmap**: Visual categorization of Technical, Tool, and Soft skills.
+- **Evidence-Based Mapping**: Proficiency levels validated with specific content from your professional history.
 
-The app stores intermediate results such as extracted skills, gap analysis, target role, and roadmap data in `localStorage` so the multi-step flow can continue across pages.
+### 🎯 Phase 2: Strategic Gap Analysis (IMPLEMENTED)
+- **Role Benchmarking**: Compare your current skill set against target industry roles.
+- **Readiness Metrics**: High-fidelity charts (Recharts) visualizing your match percentage.
+- **Visual Gaps**: Instant identification of missing critical skills.
 
-## Main Routes
+### 🗺️ Phase 3: Dynamic Learning Roadmap (IMPLEMENTED)
+- **Adaptive Planning**: Week-by-week learning timeline based on your available effort.
+- **Consolidated Dashboard**: A single hub for tracking your "Skill Evolution."
+- **Resource Aggregation**: Intelligent curation of documentation and tutorials.
 
-- `/` landing page for CATALYST
-- `/dashboard` authenticated dashboard with profile and quick actions
-- `/upload` resume upload and skill extraction
-- `/analyze` target-role and job-description gap analysis
-- `/roadmap` personalized roadmap generation and progress tracking
-- `/passport?userId=<id>` skill passport view
-- `/auth/signin` sign in with credentials, GitHub, or Google
-- `/auth/signup` account creation
-- `/ui-showcase` component showcase
+### 🛡️ Phase 4: Project Intelligence Quiz (IMPLEMENTED)
+- **Artifact Extraction**: AI extracts live projects directly from your resume.
+- **Simulation Challenges**: Tailored "What if?" technical quizzes based on your real-world architecture.
+- **Intelligence Sync**: Seamless background processing of previously uploaded context.
 
-## Project Structure
+### 🚧 Future Frontiers
+- **Phase 5**: Real-time Socratic Mission Terminals.
+- **Phase 6**: Enterprise Hiring Readiness Scores.
 
-```text
-client/
-|-- app/                  # App Router pages and route handlers
-|-- components/           # Shared UI and feature components
-|-- lib/                  # API helpers and utilities
-|-- public/               # Static assets
-|-- auth.ts               # NextAuth configuration
-`-- wrangler.json         # Cloudflare Pages configuration
-```
+---
 
-## Local Setup
+## 🛠️ Tech Stack
 
-### 1. Install dependencies
+### Frontend (Next.js 15)
+- **Runtime**: Next.js 15 (App Router) + Cloudflare Edge optimization.
+- **Auth**: Clerk Authentication (Protected & Public routes).
+- **Styling**: Tailwind CSS + Shadcn UI (Glassmorphic Design).
+- **Motion**: Framer Motion + GSAP (Cinematic transitions).
+- **Viz**: Recharts (Responsive Readiness Charts).
 
+### Backend (Node.js/Express)
+- **Database**: MongoDB (Atlas/Local).
+- **Intelligence**: Google Gemini 1.5 Flash (via OpenRouter).
+- **Optimization**: LRU-based intelligent caching for AI responses.
+
+---
+
+## 📋 Setup Instructions
+
+### 1. Clone and Install
 ```bash
+# Clone the repository
+git clone https://github.com/saurabh24thakur/CATALYST.git
+
+# Install backend dependencies
+cd server
+npm install
+
+# Install frontend dependencies
+cd ../client
 npm install
 ```
 
-### 2. Create `.env.local`
-
-Create `client/.env.local` and add the auth values from `env-setup.txt`.
-
-Example:
-
+### 2. Environment Configuration
+**Backend** (`server/.env`):
 ```env
-AUTH_SECRET="generate_a_secure_random_string_here"
-AUTH_URL="http://localhost:3000"
-AUTH_GOOGLE_ID="your_google_client_id"
-AUTH_GOOGLE_SECRET="your_google_client_secret"
-AUTH_GITHUB_ID="your_github_client_id"
-AUTH_GITHUB_SECRET="your_github_client_secret"
-NEXT_PUBLIC_API_URL="http://localhost:5000"
+PORT=5000
+MONGODB_URI=your_mongodb_uri
+GEMINI_API_KEY=your_google_ai_key
 ```
 
-Notes:
-
-- `NEXT_PUBLIC_API_URL` is used by the client API helper in `lib/api.ts`.
-- The helper normalizes the base URL and appends `/api` when needed.
-- Credentials sign-in expects the backend login endpoint at `/api/users/login`.
-- The sign-up page currently posts to `http://localhost:5000/api/users/create`.
-
-### 3. Start the development server
-
-```bash
-npm run dev
+**Frontend** (`client/.env.local`):
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
+CLERK_SECRET_KEY=your_key
 ```
 
-Open `http://localhost:3000`.
+### 3. Execution
+**Terminal 1**: `cd server && npm run dev`  
+**Terminal 2**: `cd client && npm run dev`
 
-## Available Scripts
+Navigate to: **http://localhost:3000**
 
-- `npm run dev` starts the Next.js dev server
-- `npm run build` creates a production build
-- `npm run start` runs the production server
-- `npm run lint` runs ESLint
-- `npm run pages:build` prepares a Cloudflare Pages build output
+---
 
-## Backend Expectations
+## 🎨 Design Philosophy: The "Aino" Aesthetic
+CATALYST moves away from generic dark-mode patterns toward a **Premium, High-Contrast Light Theme**.
+- **Glassmorphism**: Sophisticated blur intensities and white-border opacity.
+- **Motion Continuity**: Seamless GSAP timelines and Lenis smooth scroll for a cinematic feel.
+- **Minimalist Branding**: A focus on high-fidelity metrics and socratic simplicity.
 
-This client depends on the CATALYST backend for:
+---
 
-- resume upload and skill extraction
-- skill gap analysis
-- roadmap generation
-- user creation and credentials login
-- passport data retrieval
-- simulation and skill-tree related endpoints used by `lib/api.ts`
+## 🔑 Key API Endpoints
+- `POST /api/resume/upload`: Advanced skill extraction with full context persistence.
+- `POST /api/resume/extract-projects`: AI-driven project artifact identification.
+- `POST /api/roadmap/generate`: Adaptive timeline creation for target roles.
 
-For local development, the frontend defaults to `http://localhost:5000/api` when `NEXT_PUBLIC_API_URL` is not set.
+---
 
-## Authentication
+## 🤝 Contributing
+This project is built for the technical mastery of modern developers. Fork it, bridge your gaps, and contribute to the evolution.
 
-CATALYST uses NextAuth with:
-
-- GitHub OAuth
-- Google OAuth
-- Email/password credentials
-
-The custom sign-in page lives at `/auth/signin`, and `SessionProvider` is wired globally in `components/providers.tsx`.
-
-## Deployment
-
-For a standard production build:
-
-```bash
-npm run build
-npm run start
-```
-
-For Cloudflare Pages:
-
-```bash
-npm run pages:build
-```
-
-## Notes for Contributors
-
-- The UI is built around reusable chart, card, timeline, and layout components in `components/ui`.
-- Several pages rely on browser-only APIs such as `localStorage`, so those views are implemented as client components.
-- If you update backend endpoints, make sure to keep `lib/api.ts`, `auth.ts`, and the auth pages in sync.
+**License**: MIT  
+**Built with ❤️ for the Mastery Movement** 🏆
