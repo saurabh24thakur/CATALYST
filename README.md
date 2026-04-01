@@ -1,55 +1,62 @@
-# Skill-Bridge: Autonomous Career Architect
+# CATALYST: Cinematic AI Mastery Simulation
+**"Precision-Engineered Learning for the AI Era"**
 
-> **"LinkedIn tells you who you are. Skill-Bridge tells you who you need to become."**
+> **"Traditional learning tells you what to know. CATALYST simulates who you need to become."**
 
-An AI-powered career transformation platform that analyzes your resume, compares it against your dream job, and creates a personalized learning roadmap to bridge the gap.
-
----
-
-## 🚀 Features
-
-### ✅ Phase 1: AI Skill Auditor (IMPLEMENTED)
-- **Resume Upload**: Drag-and-drop PDF/DOCX support
-- **AI Extraction**: Gemini-powered skill extraction
-- **Skill Heatmap**: Visual categorization (Technical, Tools, Soft Skills)
-- **Proficiency Levels**: 1-5 rating with evidence from resume
-
-### ✅ Phase 2: Gap Analysis (IMPLEMENTED)
-- **Role Comparison**: Compare resume against target job roles
-- **Visual Gaps**: Interactive charts showing skill matches vs gaps
-- **Readiness Score**: AI-calculated readiness percentage
-
-### ✅ Phase 3: Dynamic Roadmap (IMPLEMENTED)
-- **Personalized Plan**: Week-by-week learning path
-- **Resource Aggregation**: Curated tutorials and documentation
-- **Progress Tracking**: Interactive timeline with completion tracking
-
-### 🚧 Coming Next
-- **Phase 4**: On-Demand Micro-Tutorials
-- **Phase 5**: Hiring Readiness Score
+CATALYST is a cinematic, AI-driven simulation platform for mastery-based learning. It transforms the technical upskilling journey into a high-stakes simulation—analyzing your professional DNA, mapping strategic skill gaps, and stress-testing your "Project Intelligence" through immersive AI challenges.
 
 ---
 
-## 📋 Prerequisites
+## 🚀 Key Features
 
-1. **Node.js** 18+ installed
-2. **MongoDB** running (local or Atlas)
-3. **Gemini API Key** (free tier available)
+### 🧠 Phase 1: Skill DNA Analysis (IMPLEMENTED)
+- **Resume Extraction**: Gemini-powered parsing of PDF/DOCX resumes.
+- **Skill Heatmap**: Visual categorization of Technical, Tool, and Soft skills.
+- **Evidence-Based Mapping**: Proficiency levels validated with specific content from your professional history.
 
-### Get Gemini API Key
-1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Click "Create API Key"
-3. Copy the key
+### 🎯 Phase 2: Strategic Gap Analysis (IMPLEMENTED)
+- **Role Benchmarking**: Compare your current skill set against target industry roles.
+- **Readiness Metrics**: High-fidelity charts (Recharts) visualizing your match percentage.
+- **Visual Gaps**: Instant identification of missing critical skills.
+
+### 🗺️ Phase 3: Dynamic Learning Roadmap (IMPLEMENTED)
+- **Adaptive Planning**: Week-by-week learning timeline based on your available effort.
+- **Consolidated Dashboard**: A single hub for tracking your "Skill Evolution."
+- **Resource Aggregation**: Intelligent curation of documentation and tutorials.
+
+### 🛡️ Phase 4: Project Intelligence Quiz (IMPLEMENTED)
+- **Artifact Extraction**: AI extracts live projects directly from your resume.
+- **Simulation Challenges**: Tailored "What if?" technical quizzes based on your real-world architecture.
+- **Intelligence Sync**: Seamless background processing of previously uploaded context.
+
+### 🚧 Future Frontiers
+- **Phase 5**: Real-time Socratic Mission Terminals.
+- **Phase 6**: Enterprise Hiring Readiness Scores.
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠️ Tech Stack
+
+### Frontend (Next.js 15)
+- **Runtime**: Next.js 15 (App Router) + Cloudflare Edge optimization.
+- **Auth**: Clerk Authentication (Protected & Public routes).
+- **Styling**: Tailwind CSS + Shadcn UI (Glassmorphic Design).
+- **Motion**: Framer Motion + GSAP (Cinematic transitions).
+- **Viz**: Recharts (Responsive Readiness Charts).
+
+### Backend (Node.js/Express)
+- **Database**: MongoDB (Atlas/Local).
+- **Intelligence**: Google Gemini 1.5 Flash (via OpenRouter).
+- **Optimization**: LRU-based intelligent caching for AI responses.
+
+---
+
+## 📋 Setup Instructions
 
 ### 1. Clone and Install
-
 ```bash
-# Navigate to project
-cd CATALYST
+# Clone the repository
+git clone https://github.com/saurabh24thakur/CATALYST.git
 
 # Install backend dependencies
 cd server
@@ -60,201 +67,46 @@ cd ../client
 npm install
 ```
 
-### 2. Configure Environment Variables
-
+### 2. Environment Configuration
 **Backend** (`server/.env`):
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/skill-bridge
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+MONGODB_URI=your_mongodb_uri
+GEMINI_API_KEY=your_google_ai_key
 ```
 
 **Frontend** (`client/.env.local`):
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key
+CLERK_SECRET_KEY=your_key
 ```
 
-### 3. Start the Servers
+### 3. Execution
+**Terminal 1**: `cd server && npm run dev`  
+**Terminal 2**: `cd client && npm run dev`
 
-**Terminal 1 - Backend**:
-```bash
-cd server
-npm run dev
-```
-
-**Terminal 2 - Frontend**:
-```bash
-cd client
-npm run dev
-```
-
-### 4. Open the App
 Navigate to: **http://localhost:3000**
 
 ---
 
-## 🎯 How to Use
-
-### Step 1: Upload Resume
-1. Open http://localhost:3000
-2. Drag and drop your resume (PDF or DOCX)
-3. Click "Analyze Resume"
-4. Wait for AI to extract skills (~10-15 seconds)
-
-### Step 2: View Extracted Skills
-- See skills categorized by type
-- Check proficiency levels (Beginner → Expert)
-- Review evidence quotes from your resume
-
-### Step 3: Gap Analysis
-- Enter your target job role (e.g., "Full Stack Developer")
-- View detailed breakdown of missing skills
-- See your readiness score for the role
-
-### Step 4: Generate Roadmap
-- Input your available hours per week
-- Get a personalized weekly learning plan
-- Track your progress week by week
+## 🎨 Design Philosophy: The "Aino" Aesthetic
+CATALYST moves away from generic dark-mode patterns toward a **Premium, High-Contrast Light Theme**.
+- **Glassmorphism**: Sophisticated blur intensities and white-border opacity.
+- **Motion Continuity**: Seamless GSAP timelines and Lenis smooth scroll for a cinematic feel.
+- **Minimalist Branding**: A focus on high-fidelity metrics and socratic simplicity.
 
 ---
 
-## 🏗️ Tech Stack
-
-### Frontend
-- **Framework**: Next.js 15 (App Router)
-- **Styling**: Tailwind CSS + Shadcn UI
-- **Visualization**: Recharts
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Language**: TypeScript
-
-### Backend
-- **Runtime**: Node.js + Express
-- **Database**: MongoDB with Mongoose
-- **AI**: Google Gemini 1.5 Flash
-- **File Processing**:
-  - `multer` - File uploads
-  - `pdf-parse` - PDF extraction
-  - `mammoth` - DOCX extraction
-
----
-
-## 📁 Project Structure
-
-```
-CATALYST/
-├── client/                 # Next.js frontend
-│   ├── app/
-│   │   ├── upload/        # Resume upload page
-│   │   ├── analyze/       # Gap analysis & role comparison
-│   │   ├── roadmap/       # Personalized learning path
-│   │   └── dashboard/     # Old simulation (deprecated)
-│   ├── components/
-│   └── lib/
-└── server/                # Express backend
-    ├── models/
-    │   ├── User.js
-    │   ├── SkillTree.js
-    │   └── Simulation.js
-    ├── routes/
-    │   ├── resume.js      # ✅ NEW: Resume upload & extraction
-    │   ├── user.js
-    │   └── ...
-    └── index.js
-```
-
----
-
-## 🔑 API Endpoints
-
-### Resume Upload
-```http
-POST /api/resume/upload
-Content-Type: multipart/form-data
-
-Body: { resume: File }
-
-Response: {
-  success: true,
-  skills: {
-    technical: [...],
-    soft: [...],
-    tools: [...]
-  },
-  totalSkills: 15
-}
-```
-
----
-
-## 🐛 Troubleshooting
-
-### "Failed to parse AI response"
-- **Cause**: Gemini API key not set or invalid
-- **Fix**: Check `server/.env` has correct `GEMINI_API_KEY`
-
-### "MongoDB connection error"
-- **Cause**: MongoDB not running
-- **Fix**: Start MongoDB locally or use MongoDB Atlas connection string
-
-### "Port 3000 already in use"
-- **Cause**: Another Next.js instance running
-- **Fix**: Kill the process or use a different port
-
----
-
-## 🎨 Design Philosophy
-
-- **Premium B2B SaaS** aesthetic
-- **Dark mode** with indigo/purple gradients
-- **Glassmorphism** effects
-- **Smooth animations** for engagement
-- **Mobile-responsive** (coming soon)
-
----
-
-## 📊 Current Status
-
-| Feature | Status |
-|---------|--------|
-| Resume Upload | ✅ Done |
-| Skill Extraction | ✅ Done |
-| Skill Categorization | ✅ Done |
-| Gap Analysis | ✅ Done |
-| Roadmap Generation | ✅ Done |
-| Micro-Tutorials | ⏳ Planned |
-| Hiring Readiness Score | ⏳ Planned |
-
----
-
-## 🚀 Next Development Steps
-
-1. **Phase 2**: Job Description input and gap analysis
-2. **Phase 3**: Gemini-powered roadmap generation
-3. **Phase 4**: On-demand tutorial system
-4. **Phase 5**: Progress tracking and readiness score
-
----
-
-## 📝 Notes
-
-- **Gemini API**: Free tier has rate limits (60 requests/minute)
-- **File Size**: Max 5MB for resume uploads
-- **Supported Formats**: PDF and DOCX only
-- **Processing Time**: ~10-15 seconds per resume
+## 🔑 Key API Endpoints
+- `POST /api/resume/upload`: Advanced skill extraction with full context persistence.
+- `POST /api/resume/extract-projects`: AI-driven project artifact identification.
+- `POST /api/roadmap/generate`: Adaptive timeline creation for target roles.
 
 ---
 
 ## 🤝 Contributing
+This project is built for the technical mastery of modern developers. Fork it, bridge your gaps, and contribute to the evolution.
 
-This is a hackathon project. Feel free to fork and extend!
-
----
-
-## 📄 License
-
-MIT
-
----
-
-**Built with ❤️ for the hackathon** 🏆
+**License**: MIT  
+**Built with ❤️ for the Mastery Movement** 🏆
