@@ -102,6 +102,7 @@ export default function UploadPage() {
       if (response.ok) {
         setSkills(data.skills);
         localStorage.setItem('extracted_skills', JSON.stringify(data.skills));
+        localStorage.setItem('resumeText', data.resumeText);
       } else {
         alert(data.error || `Upload failed: ${response.status}`);
       }

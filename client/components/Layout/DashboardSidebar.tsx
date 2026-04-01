@@ -35,12 +35,7 @@ export default function DashboardSidebar() {
 
   return (
     <div className="fixed left-0 top-0 bottom-0 w-20 bg-[#dceaf9]/80 backdrop-blur-md border-r border-[#c8dff5]/60 shadow-[4px_0_30px_rgba(0,0,0,0.03)] z-50 flex flex-col items-center py-6">
-      <div
-        className="mb-8 w-12 h-12 relative overflow-hidden rounded-xl border border-white/40 bg-white/20 p-2 shadow-sm cursor-pointer hover:shadow-md transition-all"
-        onClick={() => router.push('/')}
-      >
-        <img src="/logo.png" alt="Logo" className="w-full h-full object-contain filter invert" />
-      </div>
+      <div className="mb-8" />
 
       {/* Navigation */}
       <nav className="flex-1 flex flex-col gap-2">

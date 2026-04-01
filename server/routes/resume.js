@@ -137,7 +137,7 @@ router.post('/upload', upload.single('resume'), async (req, res) => {
 
     res.json({
       success: true,
-      resumeText: resumeText.substring(0, 500) + '...', // Preview
+      resumeText: resumeText,
       skills: categorized,
       totalSkills: skills.length
     });
@@ -164,6 +164,89 @@ router.get('/stats/:userId', async (req, res) => {
       }
     });
   } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Extract projects using Gemini
+async function extractProjectsWithAI(resumeText) {
+  const cacheKey = `projects:${hashObject(resumeText)}`;
+  
+  const { data: projects } = await cacheWrapper(
+    cacheKey,
+    30 * 24 * 60 * 60,
+    async () => {
+      const prompt = `Analyze this resume and extract all professional projects mentioned. 
+      For each project, identify the title, technologies used, the person's role, key contributions/achievements, and an AI-assessed complexity level (beginner, intermediate, advanced).
+      
+      Resume:
+      ${resumeText}
+      
+      Return ONLY a JSON object with a "projects" array.
+      Return format:
+      {
+        "projects": [
+          {
+            "title": "Project Name",
+            "technologies": ["Tech 1", "Tech 2"],
+            "role": "Role Name",
+            "keyContributions": ["Contribution 1", "Contribution 2"],
+            "complexity": "beginner" | "intermediate" | "advanced"
+          }
+        ]
+      }`;
+
+      const response = await generateContent(prompt);
+      let jsonText = response.trim();
+      
+      if (jsonText.startsWith('```json')) {
+        jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+      } else if (jsonText.startsWith('```')) {
+        jsonText = jsonText.replace(/```\n?/g, '');
+      }
+      
+      try {
+        const parsed = JSON.parse(jsonText);
+        return parsed.projects || [];
+      } catch (error) {
+        throw new Error('Failed to parse AI response for projects');
+      }
+    }
+  );
+
+  return projects;
+}
+
+// Extract projects from resume
+router.post('/extract-projects', upload.single('resume'), async (req, res) => {
+  try {
+    let resumeText;
+    
+    // Handle file upload if present
+    if (req.file) {
+      if (req.file.mimetype === 'application/pdf') {
+        resumeText = await extractTextFromPDF(req.file.buffer);
+      } else if (req.file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        resumeText = await extractTextFromDOCX(req.file.buffer);
+      }
+    } else if (req.body.resumeText) {
+      // Handle direct text if provided (alternative)
+      resumeText = req.body.resumeText;
+    }
+
+    if (!resumeText) {
+      return res.status(400).json({ error: 'No resume content provided' });
+    }
+
+    const projects = await extractProjectsWithAI(resumeText);
+
+    res.json({
+      success: true,
+      projects: projects
+    });
+
+  } catch (error) {
+    console.error('❌ Project extraction error:', error);
     res.status(500).json({ error: error.message });
   }
 });
