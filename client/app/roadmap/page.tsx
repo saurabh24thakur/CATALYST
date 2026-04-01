@@ -309,7 +309,7 @@ export default function RoadmapPage() {
                   {/* Stats Row */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl mx-auto px-4">
                     <div className="dashboard-card p-8 bg-white/70 backdrop-blur-xl border border-white rounded-[2.5rem] shadow-sm transform hover:-translate-y-2 transition-all duration-500">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Completion Curve</h3>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Completion Curve</h3>
                       <ReadinessAreaChart data={completionData} color="#7FFF00" className="h-[180px]" />
                       <div className="flex items-baseline gap-2 mt-6">
                         <span className="text-5xl font-bold text-slate-900 tracking-tighter">{Math.round(progressPercentage)}%</span>
@@ -318,20 +318,20 @@ export default function RoadmapPage() {
                     </div>
 
                     <div className="dashboard-card p-8 bg-white/70 backdrop-blur-xl border border-white rounded-[2.5rem] shadow-sm transform hover:-translate-y-2 transition-all duration-500">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Effort Density</h3>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Effort Density</h3>
                       <SkillsDistributionChart data={weeksDistributionData} colors={['#22C55E', '#cbd5e1']} className="h-[180px]" />
                       <div className="flex items-baseline gap-2 mt-6">
                         <span className="text-5xl font-bold text-slate-900 tracking-tighter">{roadmap.totalWeeks - completedWeeks}</span>
-                        <span className="text-sm font-bold text-slate-400">Weeks to go</span>
+                        <span className="text-sm font-bold text-slate-500">Weeks to go</span>
                       </div>
                     </div>
 
                     <div className="dashboard-card p-8 bg-white/70 backdrop-blur-xl border border-white rounded-[2.5rem] shadow-sm transform hover:-translate-y-2 transition-all duration-500">
-                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Workload Balance</h3>
+                      <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6">Workload Balance</h3>
                       <ReadinessAreaChart data={hoursData} color="#FACC15" className="h-[180px]" />
                       <div className="flex items-baseline gap-2 mt-6">
                         <span className="text-5xl font-bold text-slate-900 tracking-tighter">{hoursPerWeek}</span>
-                        <span className="text-sm font-bold text-slate-400">Total hours/wk</span>
+                        <span className="text-sm font-bold text-slate-500">Total hours/wk</span>
                       </div>
                     </div>
                   </div>

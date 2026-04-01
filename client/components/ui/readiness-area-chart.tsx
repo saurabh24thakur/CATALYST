@@ -43,10 +43,11 @@ export default function ReadinessAreaChart({ data, color = '#FACC15', className 
                     <YAxis domain={[0, 100]} hide />
                     <Tooltip
                         contentStyle={{
-                            backgroundColor: '#1a1a1a',
-                            border: '1px solid #333',
-                            borderRadius: '8px',
-                            color: 'white'
+                            backgroundColor: 'white',
+                            border: '1px solid #e2e8f0',
+                            borderRadius: '12px',
+                            color: '#1e293b',
+                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                         }}
                     />
                     <Area

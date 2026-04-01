@@ -23,7 +23,7 @@ export default function SkillsDistributionChart({ data, colors, className }: Ski
     if (!hasData) {
         return (
             <div className={`w-full flex flex-col items-center justify-center text-center ${className || 'h-[300px]'}`}>
-                <span className="text-sm text-white">No Skills Detected</span>
+                <span className="text-sm text-slate-500 font-bold">No Skills Detected</span>
             </div>
         );
     }
@@ -50,15 +50,15 @@ export default function SkillsDistributionChart({ data, colors, className }: Ski
                         contentStyle={{
                             backgroundColor: 'white',
                             border: '1px solid #e5e7eb',
-                            borderRadius: '8px',
-                            color: 'black',
-                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                            borderRadius: '12px',
+                            color: '#1e293b',
+                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                         }}
                     />
                     <Legend
                         verticalAlign="bottom"
                         height={36}
-                        formatter={(value) => <span style={{ color: 'white', fontWeight: 'bold' }}>{value}</span>}
+                        formatter={(value) => <span className="text-slate-900 font-bold text-xs uppercase tracking-wider">{value}</span>}
                     />
                 </PieChart>
             </ResponsiveContainer>
